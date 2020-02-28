@@ -5,6 +5,7 @@
  * @format
  * @flow
  */
+import { connect } from 'react-redux';
 
 import React from 'react';
 import {
@@ -24,7 +25,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+const App: () => React$Node = props => {
+  console.log('props :', props);
+
+  return <Text>la</Text>;
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -111,4 +115,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+function mapStateToProps(state) {
+  const {myPlans} = state;
+  return myPlans;
+}
+
+export default connect(mapStateToProps)(App);
